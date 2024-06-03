@@ -26,11 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         displayCards(player1Hand, player1Cards);
 
+        // Rotate cards after a delay
+        setTimeout(() => {
+            player1Cards.forEach(card => {
+                card.classList.add('rotate');
+            });
+        }, 500);
+
         setTimeout(() => {
             showWinnerModal();
             triggerConfetti();
             triggerBalloons();
-        }, 100);
+        }, 1000);
     }
 
     function createDeck() {
