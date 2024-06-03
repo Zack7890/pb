@@ -175,3 +175,27 @@
         }
     }
     
+
+
+    .whatsapp-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: linear-gradient(145deg, #00ff00, #00b300);
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s, transform 0.3s;
+    }
+    
+    .whatsapp-button a {
+        display: block;
+        text-decoration: none;
+        color: white;
+        font-size: 1.2em;
+        text-align: center;
+    }
+    
+    .whatsapp-button:hover {
+        background: linear-gradient(145deg, #00b300, #008000);
+        transform: translateY(-5px);
+    }
+    
