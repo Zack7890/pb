@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function triggerConfetti() {
         confetti({
-            particleCount: 1500,
+            particleCount: 800,
             spread: 90,
             origin: { y: 0.6 },
         });
