@@ -1,201 +1,217 @@
-    /* Background Gradient Animation */
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: linear-gradient(135deg, #282c34, #61dafb);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        overflow: hidden;
-        position: relative; /* Make the body relative to position the logo */
-        background-image: url('bg.jpg'); /* Set the background image */
-        background-size: cover; /* Ensure the image covers the entire background */
-        background-position: center; /* Center the background image */
-        background-repeat: no-repeat; /* Prevent the background image from repeating */
-    }
-    #logo {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 100px; /* Adjust the size as needed */
-        height: auto;
-    }
+/* Background Gradient Animation */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #282c34, #61dafb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative; /* Make the body relative to position the logo */
+    background-image: url('bg.jpg'); /* Set the background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+}
+#logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px; /* Adjust the size as needed */
+    height: auto;
+}
 
-    @keyframes gradientBG {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    .game-board {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        margin-bottom: 20px;
-    }
+.game-board {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 20px;
+}
 
-    .player-row {
-        display: flex;
-        gap: 20px;
-    }
+.player-row {
+    display: flex;
+    gap: 20px;
+}
 
-    .card {
-        width: 100px;
-        height: 150px;
-        background: linear-gradient(145deg, #ff8a65, #d84315);
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(97, 218, 251, 0.5), 0 0 20px rgba(97, 218, 251, 0.5), 0 0 30px rgba(97, 218, 251, 0.5), 0 0 40px rgba(97, 218, 251, 0.5); /* Glowing effect */
+.card {
+    width: 100px;
+    height: 150px;
+    perspective: 1000px;
+}
 
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2em;
-        color: #fff;
-        transition: transform 0.3s;
-    }
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
-    .card:hover {
-        transform: translateY(-10px);
-    }
+.card-front {
+    background-image: url('Cards-02.png');
+    background-size: cover;
+    background-position: center;
+}
 
-    #deal-button {
-        padding: 10px 20px;
-        font-size: 1.2em;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-        background: linear-gradient(145deg, #21a1f1, #1b8cd8);
-        color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: background 0.3s, transform 0.3s;
-    }
+.card-back {
+    background-size: cover;
+    background-position: center;
+}
 
-    #deal-button:hover {
-        background: linear-gradient(145deg, #1b8cd8, #21a1f1);
-        transform: translateY(-5px);
-    }
+.card:nth-child(1) .card-back {
+    background-image: url('Cards-05.png');
+}
 
-    #balloon-container {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-    }
+.card:nth-child(2) .card-back {
+    background-image: url('Cards-06.png');
+}
 
-    .balloon {
-        position: absolute;
-        bottom: -150px;
-        width: 40px;
-        height: 60px;
-        border-radius: 50%;
+.card:nth-child(3) .card-back {
+    background-image: url('Cards-07.png');
+}
+
+.card.rotate .card-front {
+    transform: rotateY(180deg);
+}
+
+.card.rotate .card-back {
+    transform: rotateY(0);
+}
+
+.card-front {
+    transform: rotateY(0);
+}
+
+.card-back {
+    transform: rotateY(-180deg);
+}
+
+#deal-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #21a1f1, #1b8cd8);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+}
+
+#deal-button:hover {
+    background: linear-gradient(145deg, #1b8cd8, #21a1f1);
+    transform: translateY(-5px);
+}
+
+#balloon-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 40px;
+    height: 60px;
+    border-radius: 50%;
+    opacity: 0.9;
+    animation: float 7s ease-in-out infinite;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
         opacity: 0.9;
-        animation: float 7s ease-in-out infinite;
     }
+    50% {
+        transform: translateY(-500px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+}
 
-    .balloon::before {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        width: 2px;
-        height: 10px;
-        background-color: rgba(0, 0, 0, 0.2);
-    }
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(145deg, #32CD32, #006400);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    animation: modalFadeIn 0.5s ease;
+}
 
-    @keyframes float {
-        0% {
-            transform: translateY(0);
-            opacity: 0.9;
-        }
-        50% {
-            transform: translateY(-500px);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-1000px);
-            opacity: 0;
-        }
-    }
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
 
-    /* Modal Styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 50%;
-        top: 20%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(145deg, #32CD32, #006400);
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        text-align: center;
-        color: white;
-        animation: modalFadeIn 0.5s ease;
-    }
+.modal-content {
+    position: relative;
+    padding: 20px;
+}
 
-    @keyframes modalFadeIn {
-        from { opacity: 0; transform: translate(-50%, -60%); }
-        to { opacity: 1; transform: translate(-50%, -50%); }
-    }
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
 
-    .modal-content {
-        position: relative;
-        padding: 20px;
-    }
+.whatsapp-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #00ff00, #00b300);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+}
 
-    .close-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 20px;
-        cursor: pointer;
-        color: white;
-    }
-    .card.rotate {
-        animation: rotateCard 1s linear;
-    }
-    
-    @keyframes rotateCard {
-        0% {
-            transform: rotateY(0deg);
-        }
-        50% {
-            transform: rotateY(180deg);
-        }
-        100% {
-            transform: rotateY(360deg);
-        }
-    }
-    
+.whatsapp-button a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+}
 
-
-    .whatsapp-button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background: linear-gradient(145deg, #00ff00, #00b300);
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: background 0.3s, transform 0.3s;
-    }
-    
-    .whatsapp-button a {
-        display: block;
-        text-decoration: none;
-        color: white;
-        font-size: 1.2em;
-        text-align: center;
-    }
-    
-    .whatsapp-button:hover {
-        background: linear-gradient(145deg, #00b300, #008000);
-        transform: translateY(-5px);
-    }
-    
+.whatsapp-button:hover {
+    background: linear-gradient(145deg, #00b300, #008000);
+    transform: translateY(-5px);
+}

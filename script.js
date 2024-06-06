@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayCards(hand, cardElements) {
         hand.forEach((card, index) => {
-            cardElements[index].textContent = `${card.value}${card.suit}`;
+            const cardBack = cardElements[index].querySelector('.card-back');
+            cardBack.textContent = `${card.value}${card.suit}`;
         });
     }
 
