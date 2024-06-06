@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             showWinnerModal();
             triggerConfetti();
-            triggerBalloons();
+            // triggerBalloons();
         }, 1000);
     }
 
@@ -81,19 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function triggerBalloons() {
-        for (let i = 0; i < 20; i++) {
-            const balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            balloon.style.left = `${Math.random() * 100}%`;
-            balloon.style.background = getRandomBalloonGradient();
-            balloonContainer.appendChild(balloon);
+    // function triggerBalloons() {
+    //     for (let i = 0; i < 20; i++) {
+    //         const balloon = document.createElement('div');
+    //         balloon.className = 'balloon';
+    //         balloon.style.left = `${Math.random() * 100}%`;
+    //         balloon.style.background = getRandomBalloonGradient();
+    //         balloonContainer.appendChild(balloon);
 
-            setTimeout(() => {
-                balloon.remove();
-            }, 7000);
-        }
-    }
+    //         setTimeout(() => {
+    //             balloon.remove();
+    //         }, 7000);
+    //     }
+    // }
 
     function getRandomBalloonGradient() {
         const colors = [
