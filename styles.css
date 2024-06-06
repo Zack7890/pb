@@ -1,22 +1,40 @@
-/* Background Gradient Animation */
+/* General body styling */
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Align items at the top */
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #282c34, #61dafb);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
     margin: 0;
     font-family: 'Arial', sans-serif;
     overflow: hidden;
     position: relative; /* Make the body relative to position the logo */
-    background-image: url('bg.jpg'); /* Set the background image */
-    background-size: cover; /* Ensure the image covers the entire background */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background: #0F212E; /* Remove background gradient */
 }
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Background image at the top */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh; /* Adjust the height to cover only the top part */
+    background-image: url('bg.jpg'); /* Set the background image */
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: top; /* Align the background image to the top */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    z-index: -1; /* Place the background image behind other content */
+    opacity: 1; /* Ensure the image is fully opaque */
+}
+
 #logo {
     position: absolute;
     top: 20px;
@@ -25,17 +43,13 @@ body {
     height: auto;
 }
 
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 .game-board {
     display: flex;
     flex-direction: column;
     gap: 40px;
     margin-bottom: 20px;
+    z-index: 1; /* Ensure it appears above the background image */
+    margin-top: 60vh; /* Adjust this value to move the game board down as needed */
 }
 
 .player-row {
@@ -103,10 +117,12 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(145deg, #21a1f1, #1b8cd8);
+    background: linear-gradient(145deg, #68a12e, #1b8cd8);
     color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background 0.3s, transform 0.3s;
+    z-index: 1; /* Ensure it appears above the background image */
+    margin-top: 20px; /* Adjust this value to move the button down as needed */
 }
 
 #deal-button:hover {
@@ -121,6 +137,7 @@ body {
     top: 0;
     left: 0;
     pointer-events: none;
+    z-index: 0; /* Ensure balloons appear behind the game elements */
 }
 
 .balloon {
@@ -195,7 +212,8 @@ body {
 }
 
 .whatsapp-button {
-    margin-top: 20px;
+    position: absolute;
+    top: 53%;
     padding: 10px 20px;
     background: linear-gradient(145deg, #00ff00, #00b300);
     border-radius: 5px;
