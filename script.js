@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createDeck() {
-        const suits = ['♠', '♥', '♦', '♣'];
-        const values = ['A'];
+        const suits = ['', '', '', ''];
+        const values = [''];
         const deck = [];
 
         for (let suit of suits) {
