@@ -122,13 +122,14 @@ body::before {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background 0.3s, transform 0.3s;
     z-index: 1; /* Ensure it appears above the background image */
-    margin-top: 20px; /* Adjust this value to move the button down as needed */
+    margin-top: 5px; /* Adjust this value to move the button down as needed */
 }
 
 #deal-button:hover {
     background: linear-gradient(145deg, #1b8cd8, #21a1f1);
     transform: translateY(-5px);
 }
+
 
 #balloon-container {
     position: absolute;
